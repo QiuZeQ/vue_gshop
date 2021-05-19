@@ -1,27 +1,51 @@
+//导入vue
 import Vue from 'vue'
+//导入路由
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Msite from '../views/Msite/Msite.vue'
+import Order from '../views/Order/Order.vue'
+import Profile from '../views/Profile/Profile.vue'
+import Search from '../views/Search/Search.vue'
+import Login from '../views/Login/Login.vue'
 
+//声明使用路由插件
 Vue.use(VueRouter)
-
+//在路由中定义所有路由对象
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path:'/',redirect:'/msite',component:Msite
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path:'/msite',component:Msite,
+    meta:{
+      showFooter:true
+    }
+  },
+  {
+    path:'/order',component:Order,
+    meta:{
+      showFooter:true
+    }
+  },
+  {
+    path:'/profile',component:Profile,
+    meta:{
+      showFooter:true
+    }
+  },
+  {
+    path:'/search',component:Search,
+    meta:{
+      showFooter:true
+    }
+  },
+  {
+    path:'/login',component:Login
+  },
 ]
-
+//声明一个路由对象
 const router = new VueRouter({
   routes
 })
-
+//向外暴露路由对象
 export default router
